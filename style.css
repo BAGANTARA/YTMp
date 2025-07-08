@@ -1,0 +1,122 @@
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: #f0f2f5;
+    color: #1c1e21;
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* Mencegah scroll saat locker aktif */
+}
+/* --- Layar Terkunci --- */
+#locker-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); 
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    padding: 20px;
+    box-sizing: border-box;
+}
+#locker-screen h1 {
+    font-size: 2em;
+    margin-bottom: 10px;
+    text-shadow: 0 0 10px black;
+}
+#locker-screen p {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+#locker-video-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+    width: 100%;
+    max-width: 1200px;
+}
+.locker-video-wrapper {
+    flex: 1 1 300px; /* Fleksibel */
+    min-width: 300px;
+    aspect-ratio: 16 / 9;
+    background-color: #000;
+    border: 2px solid #555;
+    border-radius: 8px;
+    overflow: hidden;
+    opacity: 1;
+}
+/* --- Aplikasi Utama (Tersembunyi) --- */
+#main-app {
+    display: none; /* Kunci utama, akan diubah ke 'block' oleh script */
+}
+#main-app-content {
+     padding: 20px;
+}
+#container {
+    max-width: 1600px;
+    margin: auto;
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+h1, h2 {
+    text-align: center;
+    color: #d9241b;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 15px;
+}
+#global-controls, #url-loader {
+    padding: 20px;
+    background: #f7f8fa;
+    border-radius: 6px;
+    margin-bottom: 20px;
+}
+.button-group {
+    display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: center;
+}
+.button-group:not(:first-child) { margin-top: 15px; }
+button {
+    padding: 10px 18px; font-size: 15px; cursor: pointer; border-radius: 6px;
+    border: none; font-weight: bold; transition: all 0.2s ease;
+}
+button:active { transform: scale(0.98); }
+#load-videos { background-color: #1877f2; color: white; }
+#play-all { background-color: #42b72a; color: white; }
+#pause-all { background-color: #f0b90c; color: white; }
+#stop-all { background-color: #fa383e; color: white; }
+#quality-low, #quality-medium, #quality-high { background-color: #6c757d; color: white; }
+#video-urls {
+    width: 100%; height: 100px; padding: 10px; border: 1px solid #ccc;
+    border-radius: 6px; font-size: 14px; resize: vertical; margin-bottom: 10px;
+}
+#video-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+    gap: 20px;
+}
+.video-instance-container {
+    background: #ffffff; border: 1px solid #ddd; border-radius: 8px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.05); overflow: hidden;
+}
+.video-player-wrapper {
+    position: relative; width: 100%; padding-top: 56.25%; background-color: #000;
+}
+.video-player-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+.video-settings-panel {
+    padding: 15px; background-color: #f7f8fa; font-size: 14px;
+    display: flex; flex-direction: column; gap: 12px;
+}
+.setting-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.setting-row input[type="checkbox"] { transform: scale(1.2); }
+.setting-row input[type="number"] {
+    width: 60px; padding: 5px; border: 1px solid #ccc; border-radius: 4px; text-align: center;
+}
+.setting-row input:disabled { background-color: #e9ecef; opacity: 0.7; cursor: not-allowed; }
+.setting-divider { border-top: 1px dashed #ccc; margin: 5px 0; }
+label { user-select: none; cursor: pointer; }
